@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- //1 普通对象生成 2 静态工厂类生成对象 3 实例工厂类生成对象-->
+    <bean id="commonBean" class="book.ch7.factorybean.Beanunit">
+    </bean>
+
+    <bean id="staticBean" class="book.ch7.factorybean.StaticBeanFactory" factory-method="newBeanUnit">
+    </bean>
+
+    <bean id="instanceBeanFactory" class="book.ch7.factorybean.InstanceBeanFactory">
+    </bean>
+    <bean id="instanceBean" factory-bean="instanceBeanFactory" factory-method="newBeanUnit"></bean>
+
+</beans>

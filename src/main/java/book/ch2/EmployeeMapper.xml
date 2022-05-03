@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book.ch2.EmployeeMapper">
+    <!-- Employee findByID(Integer id)
+    Employee findByID(Integer id);
+    boolean insert(Employee employee);
+    boolean updateByID(Integer id);
+    boolean deleteByID(Integer id);-->
+    <!--
+     <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+            -->
+    <select id="findByID"
+            parameterType="Integer"
+            resultType="book.ch2.Employee">
+            SELECT  * FROM employee WHERE id=#{id}
+    </select>
+    <insert id="insertID" parameterType="Integer">
+        INSERT INTO employee(NAME,age,POSITION) VALUES(#{NAME },#{age},#{POSITION })
+    </insert>
+
+</mapper>

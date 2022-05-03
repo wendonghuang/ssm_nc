@@ -1,0 +1,36 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>
+      org.springframework.web.servlet.DispatcherServlet
+    </servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springmvc.xml</param-value>
+    </init-param>
+    <!-- 在容器一启动的时候就加载该servlet
+    为正时表示容器一启动就加载，
+    并且数据越小越有优先权；
+    当为负时，什么时候用到什么加载 -->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springmvc</servlet-name>
+    <url-pattern>*.action</url-pattern><!-- 拦截扩展名为.action的请求 -->
+  </servlet-mapping>
+
+</web-app>

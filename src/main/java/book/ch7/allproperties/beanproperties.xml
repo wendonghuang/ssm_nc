@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="stu1" class="book.ch7.allproperties.Student">
+        <property name="id" value="1"></property>
+        <property name="userName" value="li"></property>
+    </bean>
+    <bean id="stu2" class="book.ch7.allproperties.Student">
+        <property name="id" value="2"></property>
+        <property name="userName" value="li"></property>
+    </bean>
+    <bean id="stu3" class="book.ch7.allproperties.Student">
+        <property name="id" value="3"></property>
+        <property name="userName" value="li"></property>
+    </bean>
+
+    <bean id="dateFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg value="yyyy-MM-dd HH:mm:ss" />
+    </bean>
+
+    <bean id="bean1" class="book.ch7.allproperties.BeanProperties">
+        <property name="id" value="1"></property>
+        <property name="name" value="zhang"></property>
+        <!--<property name="date" value="2022-1-1" ></property>  类型不能匹配-->
+        <property name="date">
+            <bean factory-bean="dateFormat" factory-method="parse">
+                <constructor-arg value="2022-2-11 8:24:5" />
+            </bean>
+        </property>
+
+        <property name="stu" ref="stu1"></property>
+
+        <property name="stuArray">
+            <array>
+                <ref bean="stu1"/>
+                <ref bean="stu2"/>
+                <ref bean="stu3"/>
+            </array>
+        </property>
+
+        <property name="nameArr">
+            <array>
+                <value>zhang</value>
+                <value>li</value>
+                <value>cheng</value>
+            </array>
+        </property>
+
+        <property name="lists">
+            <list>
+                <ref bean="stu1"/>
+                <ref bean="stu2"/>
+                <ref bean="stu3"/>
+            </list>
+        </property>
+        <property name="sets">
+            <set>
+                <ref bean="stu1"/>
+                <ref bean="stu2"/>
+                <ref bean="stu3"/>
+            </set>
+        </property>
+        <property name="maps">
+            <map>
+                <entry key="张三" value-ref="stu1"/>
+                <entry key="李四" value-ref="stu2"/>
+                <entry key="王五" value-ref="stu3"/>
+            </map>
+        </property>
+    </bean>
+</beans>
